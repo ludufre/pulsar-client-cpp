@@ -390,6 +390,21 @@ class PULSAR_PUBLIC AuthAthenz : public Authentication {
     AuthenticationDataPtr authDataAthenz_;
 };
 
+class PULSAR_PUBLIC AuthTuya : public Authentication {
+   public:
+    AuthTuya(AuthenticationDataPtr&);
+    ~AuthTuya();
+    static AuthenticationPtr create(ParamMap& params);
+    static AuthenticationPtr create(const std::string& authParamsString);
+    static AuthenticationPtr create(const std::string& id, const std::string& key);
+    const std::string getAuthMethodName() const;
+
+    Result getAuthData(AuthenticationDataPtr& authDataTuya);
+
+   private:
+    AuthenticationDataPtr authDataTuya_;
+};
+
 // OAuth 2.0 token and associated information.
 // currently mainly works for access token
 class Oauth2TokenResult {
